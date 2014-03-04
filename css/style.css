@@ -1,0 +1,20 @@
+div.peace {
+	width: 40pt;
+	float: left;
+}
+div.dish_name {
+	float: left;
+	width: 170pt;	
+}
+div.dish {
+	clear: both;
+}
+input {
+	width: 20pt;
+}
+button {
+	min-width: 40pt;
+}
+div.peace {
+	text-align: center;
+}

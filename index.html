@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Restaurant calcer</title>
+
+	<script src="http://yandex.st/jquery/2.1.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
+	<script src="http://yandex.st/angularjs/1.2.14/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="js/angular.js"><\/script>')</script>
+
+	<link href="http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script>
+	function cssLoaded(href) {
+		var cssFound = false;
+		for (var i = 0; i < document.styleSheets.length; i++) {
+			var sheet = document.styleSheets[i];
+			if (
+				sheet['href'] === "http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css" ||
+				sheet['href'] === "https://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css"
+			) {
+				cssFound = true;
+			}
+		};
+		return cssFound;
+	}
+	if (!cssLoaded('bootstrap.min.css')) {
+		local_bootstrap = new CustomEvent('link');
+		local_bootstrap.setAttribute("rel", "stylesheet");
+		local_bootstrap.setAttribute("href", "css/bootstrap.min.css");
+		document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
+	}
+	</script>
+
+	<link rel=stylesheet href="css/style.css">
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<div ng-controller="Calcer">
+		<div class="dish">
+			<div class="dish_name">
+				<button type="button" class="btn btn-primary" ng-click="add_dish()">
+					Add dish
+				</button>
+				<button type="button" class="btn btn-primary" ng-click="add_person()">
+					Add person
+				</button>
+			</div>
+			<div ng-repeat="person in people" class="peace">
+				{{ person.name }}
+			</div>
+			<div class="price">
+				<button type="button" class="btn btn-primary" ng-click="add_person()">
+					Add person
+				</button>
+			</div>
+		</div>
+
+		<div ng-repeat="dish in dishes" class="dish">
+			<div class="dish_name">{{ dish.title }} </div>
+			<div ng-repeat="person in people" class="peace" ng-click="inc_peace(person.id, dish.id)">
+				{{person.peaces[dish.id]}}
+			</div>
+			<div class="price">
+			<form class="form-inline">
+				<input type="number" class="form-control" placeholder="{{dish.price}}" min="0" ng-model="dish.price">
+				</form>
+			</div>
+		</div>
+
+		<div class="dish">
+			<div class="dish_name">
+				<button type="button" class="btn btn-primary" ng-click="add_dish()">
+					Add dish
+				</button>
+			</div>
+			<div ng-repeat="person in people" class="peace">
+				<div class="peace">
+					<input type="number" class="form-control" placeholder="{{person.payed}}" min="0" ng-model="person.payed">
+				</div>
+			</div>
+			<div class="price">
+				{{total_sum()}}
+			</div>
+		</div>
+
+		<div class="dish">
+			<div class="dish_name">
+				To pay:
+			</div>
+			<div ng-repeat="person in people" class="peace">
+				<div class="peace">
+					{{sum_person(person.id)}}
+				</div>
+			</div>
+			<div class="price">
+				Tips: {{tips()}}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
