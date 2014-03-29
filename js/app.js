@@ -39,10 +39,9 @@ function Calcer($scope) {
 	$scope.sum_person = function (person_id) {
 		var sum = 0;
 		for (var i = 0; i < $scope.dishes.length; i++) {
-			var sum_dish = 0;
-			for (var j = 0; j < $scope.people.length; j++) {
-				sum_dish += $scope.people[j].peaces[i];
-			};
+			var sum_dish = _.reduce($scope.people, function (memo, person) {
+				return memo + person.peaces[i];
+			}, 0);
 			sum += 1.0 * $scope.people[person_id].peaces[i] * $scope.dishes[i].price / sum_dish;
 		};
 		return (sum - $scope.people[person_id].payed).toFixed(1);
