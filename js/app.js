@@ -46,6 +46,11 @@ function Calcer($scope) {
 		};
 		return (sum - $scope.people[person_id].payed).toFixed(1);
 	}
+	$scope.equalize = function (dish_id) {
+		for (var i = 0; i < $scope.people.length; i++) {
+			$scope.people[i].peaces[dish_id] = 1;
+		};
+	}
 	$scope.tips = function () {
 		var total = _.reduce($scope.dishes, function (memo, dish) {return memo + dish.price;}, 0);
 		var payed = _.reduce($scope.people, function (memo, person) { return memo + person.payed;}, 0);

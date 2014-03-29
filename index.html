@@ -64,7 +64,7 @@
 			<td>
 				<div class="btn-group">
 					<button type="button" class="btn btn-default">{{ dish.title }}</button>
-					<button type="button" class="btn btn-success">=</button>
+					<button type="button" class="btn btn-success" ng-click="equalize(dish.id)">=</button>
 				</div>
 			</td>
 			<td ng-repeat="person in people" ng-click="inc_peace(person.id, dish.id)">
