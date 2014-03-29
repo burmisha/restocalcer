@@ -10,7 +10,7 @@ function Calcer($scope) {
 		];
 	$scope.total_sum = function () {
 		var sum = 0;
-		angular.forEach($scope.dishes, function(dish) {
+		_.each($scope.dishes, function(dish) {
 			sum += dish.price;
 		});
 		return sum;
@@ -29,7 +29,7 @@ function Calcer($scope) {
 			price: 0, 
 			id: $scope.dishes.length
 		});
-		angular.forEach($scope.people, function(person) {
+		_.each($scope.people, function(person) {
 			person.peaces.push(0);
 		});
 	}
@@ -48,14 +48,8 @@ function Calcer($scope) {
 		return (sum - $scope.people[person_id].payed).toFixed(1);
 	}
 	$scope.tips = function () {
-		var price = 0;
-		var payed = 0;
-		angular.forEach($scope.dishes, function(dish) {
-			price += dish.price;
-		});
-		angular.forEach($scope.people, function(person) {
-			payed += person.payed;
-		});
-		return (payed - price).toFixed(1);
+		var total = _.reduce($scope.dishes, function (memo, dish) {return memo + dish.price;}, 0);
+		var payed = _.reduce($scope.people, function (memo, person) { return memo + person.payed;}, 0);
+		return (payed - total).toFixed(1);
 	}
 }
