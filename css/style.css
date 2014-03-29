@@ -1,25 +1,10 @@
-div.peace {
-	width: 50pt;
-	float: left;
-}
-div.dish_name {
-	float: left;
-	width: 170pt;	
-}
-div.dish {
-	clear: both;
-}
-input {
-	width: 20pt;
-}
-button {
-	min-width: 40pt;
-}
-div.peace {
-	text-align: center;
+input.short {
+	max-width: 40pt;
 }
 #wrapper {
-	float: left;
 	margin: 0pt auto 0pt auto;
-	min-width: 80%;
+}
+td {
+	text-align: center;
+	vertical-align: center;
 }

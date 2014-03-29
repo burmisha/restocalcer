@@ -37,72 +37,68 @@
 	<script src="js/app.js"></script>
 </head>
 <body>
-	<div ng-controller="Calcer" id="wrapper">
-		<div class="dish">
-			<div class="dish_name">
-				<button type="button" class="btn btn-primary" ng-click="add_dish()">
-					Add dish
-				</button>
-				<button type="button" class="btn btn-primary" ng-click="add_person()">
-					Add person
-				</button>
-			</div>
-			<div ng-repeat="person in people" class="peace">
+	<table ng-controller="Calcer" id="wrapper">
+		<tr>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary">
+					Add:
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="add_person()">
+					person →
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="add_dish()">
+					dish ↓
+					</button>
+				</div>
+			</td>
+			<td ng-repeat="person in people">
 				<button type="button" class="btn btn-default">{{ person.name }}</button>
-			</div>
-			<div class="price">
-				<button type="button" class="btn btn-primary" ng-click="add_person()">
-					Add person
-				</button>
-			</div>
-		</div>
+			</td>
+			<td>
+				
+			</td>
+		</tr>
 
-		<div ng-repeat="dish in dishes" class="dish">
-			<div class="dish_name">
+		<tr ng-repeat="dish in dishes">
+			<td>
 				<div class="btn-group">
 					<button type="button" class="btn btn-default">{{ dish.title }}</button>
 					<button type="button" class="btn btn-success">=</button>
 				</div>
-			</div>
-			<div ng-repeat="person in people" class="peace" ng-click="inc_peace(person.id, dish.id)">
+			</td>
+			<td ng-repeat="person in people" ng-click="inc_peace(person.id, dish.id)">
 				{{person.peaces[dish.id]}}
-			</div>
-			<div class="price">
-			<form class="form-inline">
-				<input type="number" class="form-control" placeholder="{{dish.price}}" min="0" ng-model="dish.price">
+			</td>
+			<td>
+				<form class="form-inline">
+					<input type="number" class="form-control short" placeholder="{{dish.price}}" min="0" ng-model="dish.price">
 				</form>
-			</div>
-		</div>
+			</td>
+		</tr>
 
-		<div class="dish">
-			<div class="dish_name">
-				<button type="button" class="btn btn-primary" ng-click="add_dish()">
-					Add dish
-				</button>
-			</div>
-			<div ng-repeat="person in people" class="peace">
-				<div class="peace">
-					<input type="number" class="form-control" placeholder="{{person.payed}}" min="0" ng-model="person.payed">
-				</div>
-			</div>
-			<div class="price">
+		<tr>
+			<td>
+			</td>
+			<td ng-repeat="person in people">
+					<input type="number" class="form-control short" placeholder="{{person.payed}}" min="0" ng-model="person.payed">
+			</td>
+			<td class="price">
 				{{total_sum()}}
-			</div>
-		</div>
+			</td>
+		</tr>
 
-		<div class="dish">
-			<div class="dish_name">
+		<tr>
+			<td>
 				To pay:
-			</div>
-			<div ng-repeat="person in people" class="peace">
-				<div class="peace">
+			</td>
+			<td ng-repeat="person in people">
 					{{sum_person(person.id)}}
-				</div>
-			</div>
-			<div class="price">
+			</td>
+			<td class="price">
 				Tips: {{tips()}}
-			</div>
-		</div>
-	</div>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
