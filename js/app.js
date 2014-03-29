@@ -5,9 +5,9 @@ function Calcer($scope) {
 		, {name: "Diana", payed: 0, peaces: [0, 0, 0], id: 1}
 	];
 	$scope.dishes = [
-		{id: 0, title: "fish", price: 20}
-		, {id: 1, title: "chips", price: 10}
-		, {id: 2, title: "water", price: 5}
+		{id: 0, title: "fish", price: 20, in_edit: false}
+		, {id: 1, title: "chips", price: 10, in_edit: false}
+		, {id: 2, title: "water", price: 5, in_edit: false}
 		];
 	$scope.total_sum = function () {
 		var sum = 0;
@@ -33,6 +33,12 @@ function Calcer($scope) {
 		_.each($scope.people, function(person) {
 			person.peaces.push(0);
 		});
+	}
+	$scope.enable_dish_editor = function (dish_id) {
+		$scope.dishes[dish_id].in_edit = true;
+	}
+	$scope.disable_dish_editor = function (dish_id) {
+		$scope.dishes[dish_id].in_edit = false;
 	}
 	$scope.inc_peace = function (person_id, dish_id) {
 		$scope.people[person_id].peaces[dish_id] += $scope.diff;

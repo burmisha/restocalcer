@@ -71,7 +71,10 @@
 		<tr ng-repeat="dish in dishes">
 			<td>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default">{{ dish.title }}</button>
+					<button type="button" class="btn btn-default" ng-hide="dish.in_edit">{{ dish.title }}</button>
+					<button type="button" class="btn btn-default" ng-hide="dish.in_edit" ng-click="enable_dish_editor(dish.id)">Edit</button>
+					<input  class="btn" placeholder="{{dish.title}}" ng-show="dish.in_edit" ng-model="dish.title">
+					<button type="button" class="btn btn-default" ng-show="dish.in_edit" ng-click="disable_dish_editor(dish.id)">Done</button>
 					<button type="button" class="btn btn-success" ng-click="equalize(dish.id)">=</button>
 				</div>
 			</td>
