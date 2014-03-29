@@ -1,4 +1,5 @@
 function Calcer($scope) {
+	$scope.diff = 1;
 	$scope.people = [
 		{name: "Ilya", payed: 0, peaces: [0, 0, 0], id: 0}
 		, {name: "Diana", payed: 0, peaces: [0, 0, 0], id: 1}
@@ -34,7 +35,7 @@ function Calcer($scope) {
 		});
 	}
 	$scope.inc_peace = function (person_id, dish_id) {
-		$scope.people[person_id].peaces[dish_id] += 1;
+		$scope.people[person_id].peaces[dish_id] += $scope.diff;
 	}
 	$scope.sum_person = function (person_id) {
 		var sum = 0;
@@ -55,5 +56,8 @@ function Calcer($scope) {
 		var total = _.reduce($scope.dishes, function (memo, dish) {return memo + dish.price;}, 0);
 		var payed = _.reduce($scope.people, function (memo, person) { return memo + person.payed;}, 0);
 		return (payed - total).toFixed(1);
+	}
+	$scope.set_diff = function (new_diff) {
+		$scope.diff = new_diff
 	}
 }

@@ -45,11 +45,19 @@
 					Add:
 					</button>
 					<button type="button" class="btn btn-primary" ng-click="add_person()">
-					person →
+					→
 					</button>
 					<button type="button" class="btn btn-primary" ng-click="add_dish()">
-					dish ↓
+					↓
 					</button>
+				</div>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-danger" ng-click="set_diff(-1)">
+					<input type="radio" name="options" id="option1">-1
+					</label>
+					<label class="btn btn-success" ng-click="set_diff(+1)">
+					<input type="radio" name="options" id="option2">+1
+					</label>
 				</div>
 			</td>
 			<td ng-repeat="person in people">
